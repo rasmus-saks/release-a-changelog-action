@@ -1,0 +1,11 @@
+name: 'Release a Changelog'
+description: 'Creates a GitHub release based on Keep a Changelog'
+
+runs:
+  using: node12
+  main: 'index.js'
+
+inputs:
+  github-token:
+    description: "GitHub token"
+    required: true
