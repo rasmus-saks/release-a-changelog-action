@@ -7,5 +7,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.0.1] - 2021-05-12
+
+### Changed
+
+* Added an icon for publishing to GitHub Marketplace
+
 ## [v1.0.0] - 2021-05-11
 * Initial release
