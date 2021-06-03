@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release a Changelog
-        uses: rasmus-saks/release-a-changelog@v1.0.0
+        uses: rasmus-saks/release-a-changelog-action@v1.0.1
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
 ```
