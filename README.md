@@ -2,6 +2,15 @@
 This GitHub action creates a release based on your `CHANGELOG.md` file. 
 You must use [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format or this will not work.
 
+A release is created every time a new version header is added to your `CHANGELOG.md` file. The content of the release is the entire text up to the next version header (the previously released version).
+```markdown
+## [<version>] - yyyy-mm-dd
+<content>
+
+## [<previous version>] - yyyy-mm-dd
+```
+
+
 
 # Installation
 
