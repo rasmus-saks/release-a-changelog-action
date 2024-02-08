@@ -31,9 +31,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Release a Changelog
-        uses: rasmus-saks/release-a-changelog-action@v1.0.1
+        uses: rasmus-saks/release-a-changelog-action@v1.1.0
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
+          # Optional - path to your changelog file. Defaults to 'CHANGELOG.md'
+          path: 'path/to/my/CHANGELOG.md'
 ```
 
 > :warning: Make sure you have a `checkout` action before `release-a-changelog`, otherwise it won't be able to read your `CHANGELOG.md` file

@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.1.0] - 2024-02-08
+
+### Added
+
+* Added the `path` input parameter to specify the location of the changelog file
+
 ## [v1.0.1] - 2021-05-12
 
 ### Changed
