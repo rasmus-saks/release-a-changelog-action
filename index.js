@@ -15,14 +15,14 @@ async function run() {
   }
 
   try {
-    await octokit.repos.getReleaseByTag({
+    await octokit.rest.repos.getReleaseByTag({
       ...github.context.repo,
       tag: entry.version
     })
     console.log(`A release already exists for ${entry.version}, skipping`)
   } catch (error) {
     console.log(`Could not find a GitHub release for ${entry.version}, creating one`)
-    octokit.repos.createRelease({
+    octokit.rest.repos.createRelease({
       ...github.context.repo,
       tag_name: entry.version,
       name: entry.version,
