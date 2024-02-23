@@ -8,6 +8,8 @@ async function run() {
   const octokit = github.getOctokit(core.getInput("github-token", { required: true }));
   const changelogFile = core.getInput("path")
   const entry = getLatestChangelogEntry(changelogFile)
+  const releaseTitle = core.getInput("title-template").replaceAll("{version}", entry.version)
+  const releaseTag = core.getInput("tag-template").replaceAll("{version}", entry.version)
   if (!entry) {
     console.log(`Could not find the latest release from ${changelogFile}`)
     return
@@ -16,15 +18,15 @@ async function run() {
   try {
     await octokit.rest.repos.getReleaseByTag({
       ...github.context.repo,
-      tag: entry.version
+      tag: releaseTag
     })
-    console.log(`A release already exists for ${entry.version}, skipping`)
+    console.log(`A release already exists for ${releaseTag}, skipping`)
   } catch (error) {
-    console.log(`Could not find a GitHub release for ${entry.version}, creating one`)
+    console.log(`Could not find a GitHub release for ${releaseTag}, creating one`)
     octokit.rest.repos.createRelease({
       ...github.context.repo,
-      tag_name: entry.version,
-      name: entry.version,
+      tag_name: releaseTag,
+      name: releaseTitle,
       target_commitish: github.context.sha,
       body: entry.changelog,
       draft: false,

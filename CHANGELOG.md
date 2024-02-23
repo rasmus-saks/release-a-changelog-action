@@ -7,6 +7,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.2.0] - 2024-02-23
+
+### Added
+
+* Added the ability to define the format of the release title and tag.
+
 ## [v1.1.1] - 2024-02-23
 
 ### Fixed

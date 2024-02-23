@@ -29,16 +29,52 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Release a Changelog
-        uses: rasmus-saks/release-a-changelog-action@v1.1.0
+        uses: rasmus-saks/release-a-changelog-action@v1.2.0
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
           # Optional - path to your changelog file. Defaults to 'CHANGELOG.md'
           path: 'path/to/my/CHANGELOG.md'
+          # Optional - format of the release title. Defaults to '{version}'
+          title-template: 'My Project {version}'
+          # Optional - format of the release tag. Defaults to '{version}'
+          tag-template: 'my-project-{version}'
 ```
 
 > :warning: Make sure you have a `checkout` action before `release-a-changelog`, otherwise it won't be able to read your `CHANGELOG.md` file
+
+## Multi-project setup
+
+Use the `title-template` and `tag-template` inputs to define the format of the release title and tag for each separate project in your repository.
+Use `{version}` as a placeholder for the version number.
+
+> :warning: Make sure the `tag-template` is unique for each project in the repository, otherwise releases may clash with each other.
+
+```yaml
+name: Release a Changelog
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release_a_changelog:
+    name: Release a Changelog
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Release a Changelog
+        uses: rasmus-saks/release-a-changelog-action@v1.2.0
+        with:
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          path: 'my-sub-project/CHANGELOG.md'
+          title-template: 'My Sub Project {version}'
+          tag-template: 'my-sub-project-{version}'
+```
+
 
 # Usage
 1. Add a new version to `CHANGELOG.md` according to [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)

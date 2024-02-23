@@ -17,3 +17,11 @@ inputs:
     description: "Path to the changelog file"
     required: false
     default: "CHANGELOG.md"
+  title-template:
+    description: "Template for the release title. {version} is replaced with the version from the changelog"
+    required: false
+    default: "{version}"
+  tag-template:
+    description: "Template for the release tag. {version} is replaced with the version from the changelog"
+    required: false
+    default: "{version}"
