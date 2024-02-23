@@ -7,6 +7,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [v1.1.1] - 2024-02-23
+
+### Fixed
+
+* Fixed the `path` input not actually being defined in `action.yml`
+* Moved from deprecated Node 12 to Node 20
+
 ## [v1.1.0] - 2024-02-08
 
 ### Added

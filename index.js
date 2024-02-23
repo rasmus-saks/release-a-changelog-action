@@ -2,12 +2,11 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
-const DEFAULT_CHANGELOG_FILE_PATH = 'CHANGELOG.md'
 const VERSION_REGEX = /## \[(.+)] - (.+)/
 
 async function run() {
   const octokit = github.getOctokit(core.getInput("github-token", { required: true }));
-  const changelogFile = core.getInput("path") || DEFAULT_CHANGELOG_FILE_PATH
+  const changelogFile = core.getInput("path")
   const entry = getLatestChangelogEntry(changelogFile)
   if (!entry) {
     console.log(`Could not find the latest release from ${changelogFile}`)

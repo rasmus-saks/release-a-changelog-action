@@ -2,7 +2,7 @@ name: 'Release a Changelog'
 description: 'Creates a GitHub release based on Keep a Changelog'
 
 runs:
-  using: node12
+  using: node20
   main: 'index.js'
 
 branding:
@@ -13,3 +13,7 @@ inputs:
   github-token:
     description: "GitHub token"
     required: true
+  path:
+    description: "Path to the changelog file"
+    required: false
+    default: "CHANGELOG.md"
